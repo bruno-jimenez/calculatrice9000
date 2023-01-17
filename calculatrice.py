@@ -10,11 +10,13 @@ equation= StringVar()
 result= StringVar()
 
 # affichage
-calcul_entry=Entry(root ,textvariable=equation, bg='white', font=10)
+calcul_entry=Entry(root ,textvariable=equation, bg='white', font=10, foreground='lightgrey')
 calcul_entry.grid(columnspan=4, ipadx=17, ipady=12)
+calcul_entry.configure(state="readonly")
 
-result_entry=Entry(root ,textvariable=result, bg='white', font=10)
+result_entry=Entry(root ,textvariable=result, bg='white', font=10, foreground='black')
 result_entry.grid(columnspan=4,ipadx=17, ipady=12)
+result_entry.configure(state="readonly")
 # V / * 
 racine_button=Button(root, text="√", bg='#454545' , width=5, height=3, border=2, font=10)
 racine_button.grid(row=3, column=0)
