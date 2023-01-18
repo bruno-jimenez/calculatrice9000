@@ -3,15 +3,19 @@ from tkinter import *
 root = Tk()
 root.title("Calculatrice")
 root.resizable(width=False, height=False)
-root.geometry("258x480")
+root.geometry("258x530")
 expression=""
 equation= StringVar()
+resultat= StringVar()
 
 # affichage 
 calcul_entry=Entry(root ,textvariable=equation, bg='white', font=10, foreground='black')
 calcul_entry.grid(columnspan=4, ipadx=17, ipady=12)
 calcul_entry.configure(state="readonly")
 
+result_entry=Entry(root ,textvariable=resultat, bg='white', font=10, foreground='black')
+result_entry.grid(columnspan=4, ipadx=17, ipady=12)
+result_entry.configure(state="readonly")
 # V % ² / 
 
 racine_button=Button(root, text="√", bg='#454545' , width=5, height=3, border=2, font=10,command=lambda: button_squareroot())
@@ -117,11 +121,11 @@ def button_equal():
     try:
         global expression
         total = str(eval(expression))
-        equation.set(total)
-        expression = ""
+        resultat.set(total)
+    #    expression = ""
 
     except:
-        equation.set('error')
+        resultat.set('error')
         expression = ""
 
 root.mainloop()
