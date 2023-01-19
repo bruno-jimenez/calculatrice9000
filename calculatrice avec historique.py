@@ -7,15 +7,20 @@ root.geometry("258x530")
 expression=""
 equation= StringVar()
 resultat= StringVar()
+calc_hist_equation= StringVar()
+calc_hist_result= StringVar()
 
 # affichage 
+# affichage calcul
 calcul_entry=Entry(root ,textvariable=equation, bg='white', font=10, foreground='grey')
 calcul_entry.grid(columnspan=4, ipadx=17, ipady=12)
 calcul_entry.configure(state="readonly")
 
+#affichage resultat
 result_entry=Entry(root ,textvariable=resultat, bg='white', font=10, foreground='black')
 result_entry.grid(columnspan=4, ipadx=17, ipady=12)
 result_entry.configure(state="readonly")
+
 # V % ² / 
 
 racine_button=Button(root, text="√", bg='#454545' , width=5, height=3, border=2, font=10,command=lambda: button_squareroot())
@@ -123,9 +128,18 @@ def button_equal():
         total = str(eval(expression))
         resultat.set(total)
     #    expression = ""
-
     except:
         resultat.set('error')
         expression = ""
+
+def historique():
+        for i in range(0, 10):
+            calc_hist_equation= resultat
+            calc_hist_equation[i] = i
+            calc_hist_result= resultat
+            calc_hist_result[i] = i
+            i += 1
+        print(calc_hist_equation)
+        print(calc_hist_result)
 
 root.mainloop()
